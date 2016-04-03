@@ -63,7 +63,10 @@ func (c *collector) capture() {
 		stats.NumCgo = runtime.NumCgoCall()
 	}
 
-	go c.options.client.Collect(stats)
+	go func() {
+		defer recoverCheck()
+		c.options.client.Collect(stats)
+	}()
 }
 
 func recoverCheck() {
