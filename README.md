@@ -15,3 +15,13 @@ collections client.
 ## Supported collectors
 
 The collector interface has only one method, `Count(bucket string, count int64)`.
+
+## Example
+
+```go
+func main() {
+	statsd := statsd.New()
+	stats := stats.New(stats.Client(statsd))
+	go stats.Collect()
+}
+```
