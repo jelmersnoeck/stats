@@ -22,9 +22,22 @@ collections client.
 ## Example
 
 ```go
+package main
+
+import (
+    "github.com/jelmersnoeck/stats"
+    "github.com/jelmersnoeck/stats/clients/statsd"
+
+    sd "gopkg.in/alexcesaro/statsd.v2"
+)
+
 func main() {
-	statsd := statsd.New()
-	stats := stats.New(stats.Client(statsd))
-	go stats.Collect()
+    cl, err := sd.New()
+    if err != nil {
+        // error connecting to statsd
+    }
+
+    stats := stats.New(stats.Client(statsd.New(cl)))
+    go stats.Collect()
 }
 ```
