@@ -59,6 +59,10 @@ func (c *collector) capture() {
 		}
 	}
 
+	if c.options.collectFiles {
+		stats.Files = fileCount()
+	}
+
 	if c.options.collectCgo {
 		stats.NumCgo = runtime.NumCgoCall()
 	}

@@ -9,6 +9,7 @@ import (
 
 func TestCapture(t *testing.T) {
 	runtime.GC()
+
 	var wg sync.WaitGroup
 	col := &testCollector{wg: &wg}
 	cl := New(CollectionClient(col))
@@ -32,8 +33,14 @@ func TestCapture(t *testing.T) {
 		t.Errorf("Exected a GC Pause to have been recorded")
 	}
 
+	if col.Files <= 0 {
+		// TODO: Figure out way to open file counter reliably.
+		//t.Errorf("Expected a filecount to be present")
+	}
+
 	if col.NumCgo <= 0 {
-		// Need to figure out a way to test this with stdlib
+		// TODO: Need to figure out a way to test this with stdlib
+		//t.Errorf("Expected CGO calls to have happened")
 	}
 }
 
