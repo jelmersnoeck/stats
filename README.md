@@ -19,6 +19,13 @@ collections client.
 
 - statsd
 
+## OS Support
+
+Due to a filecount option, only the following OS are supported:
+
+- Darwin
+- Linux
+
 ## Example
 
 ```go
