@@ -12,9 +12,9 @@ collections client.
 - Garbage Collection
 - CGO Calls
 
-## Supported collectors
+## Supported collector clients
 
-The collector interface has only one method, `Count(bucket string, count int64)`.
+- statsd
 
 ## Example
 
