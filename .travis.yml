@@ -1,4 +1,7 @@
 language: go
+before_script:
+  - go get -u gopkg.in/alexcesaro/statsd.v2
+script: go test -v -bench=. -run=. ./...
 os:
   - linux
   - osx
