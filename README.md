@@ -1,5 +1,7 @@
 # Stats
 
+[![Build Status](https://travis-ci.org/jelmersnoeck/stats.svg?branch=master)](https://travis-ci.org/jelmersnoeck/stats)
+
 Stats is a statistics collection library for your Go applications. It collects
 data on a regular, configurable interval and sends it to a configurable
 collections client.
