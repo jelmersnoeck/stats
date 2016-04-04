@@ -10,6 +10,7 @@ import (
 type collector struct {
 	options collectionOptions
 	lastGC  int64
+	lastCgo int64
 }
 
 // New creates a new client that is set up to collect application statistics.
@@ -64,7 +65,9 @@ func (c *collector) capture() {
 	}
 
 	if c.options.collectCgo {
-		stats.NumCgo = runtime.NumCgoCall()
+		cgo := runtime.NumCgoCall()
+		stats.NumCgo = cgo - c.lastCgo
+		c.lastCgo = cgo
 	}
 
 	go func() {
