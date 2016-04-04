@@ -5,15 +5,12 @@ import (
 
 	"github.com/jelmersnoeck/stats"
 	"github.com/jelmersnoeck/stats/clients/statsd"
-
-	sd "gopkg.in/alexcesaro/statsd.v2"
 )
 
 func BenchmarkStatsdClient(b *testing.B) {
 	b.ReportAllocs()
 
-	cl, _ := sd.New(sd.Mute(true))
-	c := statsd.New(cl)
+	c, _ := statsd.New()
 	stats := stats.AppStat{}
 
 	for i := 0; i < b.N; i++ {

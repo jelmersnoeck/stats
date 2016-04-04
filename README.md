@@ -34,17 +34,15 @@ package main
 import (
     "github.com/jelmersnoeck/stats"
     "github.com/jelmersnoeck/stats/clients/statsd"
-
-    sd "gopkg.in/alexcesaro/statsd.v2"
 )
 
 func main() {
-    cl, err := sd.New()
+    cl, err := statsd.New()
     if err != nil {
         // error connecting to statsd
     }
 
-    stats := stats.New(stats.Client(statsd.New(cl)))
-    go stats.Collect()
+    s := stats.New(stats.Client(cl))
+    go s.Collect()
 }
 ```

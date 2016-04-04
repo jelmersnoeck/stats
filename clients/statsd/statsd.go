@@ -14,8 +14,13 @@ type Client struct {
 }
 
 // New creates a new statsd compatible client for the stats collector.
-func New(c *sd.Client) *Client {
-	return &Client{Client: c}
+func New(opts ...sd.Option) (*Client, error) {
+	cl, err := sd.New(opts...)
+	if err != nil {
+		return nil, err
+	}
+
+	return &Client{Client: cl}, nil
 }
 
 // Collect will take an AppStat and put the data into statsd metrics. All the
