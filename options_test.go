@@ -24,10 +24,6 @@ func TestDefaultOptions(t *testing.T) {
 		t.Errorf("Expected goroutine collection to be enabled by default")
 	}
 
-	if !ops.collectFiles {
-		t.Errorf("Expected open file collection to be enabled by default")
-	}
-
 	if !ops.collectGC {
 		t.Errorf("Expected Garbage Collection collection to be enabled by default")
 	}
@@ -64,12 +60,6 @@ func TestCollectMemory(t *testing.T) {
 func TestCollectGoroutines(t *testing.T) {
 	if New(CollectGoroutines(false)).options.collectGoroutines {
 		t.Errorf("Expected goroutine collection to be disabled")
-	}
-}
-
-func TestCollectFiles(t *testing.T) {
-	if New(CollectFiles(false)).options.collectFiles {
-		t.Errorf("Expected open files collection to be disabled")
 	}
 }
 

@@ -11,20 +11,12 @@ collections client.
 
 - Memory usage
 - Goroutines
-- Open files
 - Garbage Collection
 - CGO Calls
 
 ## Supported collector clients
 
 - statsd
-
-## OS Support
-
-Due to a filecount option, only the following OS are supported:
-
-- Darwin
-- Linux
 
 ## Example
 

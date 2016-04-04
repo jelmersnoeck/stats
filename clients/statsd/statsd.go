@@ -28,7 +28,6 @@ func New(opts ...sd.Option) (*Client, error) {
 func (s *Client) Collect(stats stats.AppStat) {
 	s.Count("appstat.memory", stats.Memory)
 	s.Count("appstat.goroutines", stats.Goroutines)
-	s.Count("appstat.files", stats.Files)
 	s.Count("appstat.num_gc", stats.NumGC)
 	s.Count("appstat.num_cgo", stats.NumCgo)
 

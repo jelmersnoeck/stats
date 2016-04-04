@@ -60,10 +60,6 @@ func (c *collector) capture() {
 		}
 	}
 
-	if c.options.collectFiles {
-		stats.Files = fileCount()
-	}
-
 	if c.options.collectCgo {
 		cgo := runtime.NumCgoCall()
 		stats.NumCgo = cgo - c.lastCgo

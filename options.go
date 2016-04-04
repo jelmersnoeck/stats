@@ -8,7 +8,6 @@ type collectionOptions struct {
 
 	collectMemory     bool
 	collectGoroutines bool
-	collectFiles      bool
 	collectGC         bool
 	collectCgo        bool
 }
@@ -21,7 +20,6 @@ func newOptions(opts ...collectionOption) collectionOptions {
 		client:            &NilClient{},
 		collectMemory:     true,
 		collectGoroutines: true,
-		collectFiles:      true,
 		collectGC:         true,
 		collectCgo:        true,
 	}
@@ -64,15 +62,6 @@ func CollectMemory(c bool) collectionOption {
 func CollectGoroutines(c bool) collectionOption {
 	return func(o *collectionOptions) {
 		o.collectGoroutines = c
-	}
-}
-
-// CollectFiles is the option to enable or disable collection of the reference
-// for the current process to how many open files it is consuming. This is
-// enabled by default.
-func CollectFiles(c bool) collectionOption {
-	return func(o *collectionOptions) {
-		o.collectFiles = c
 	}
 }
 

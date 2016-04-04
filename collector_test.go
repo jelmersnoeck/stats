@@ -33,11 +33,6 @@ func TestCapture(t *testing.T) {
 		t.Errorf("Exected a GC Pause to have been recorded")
 	}
 
-	if col.Files <= 0 {
-		// TODO: Figure out way to open file counter reliably.
-		//t.Errorf("Expected a filecount to be present")
-	}
-
 	if col.NumCgo <= 0 {
 		// TODO: Need to figure out a way to test this with stdlib
 		//t.Errorf("Expected CGO calls to have happened")
